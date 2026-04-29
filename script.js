@@ -1,6 +1,12 @@
 const STORAGE_KEY = "songcards-deck";
+const talkingDrumCard = {
+  trackId: "5SQCSiFsP7bIREv5h3y5Bp",
+  answer:
+    "10-1: Talking Drum https://open.spotify.com/track/5SQCSiFsP7bIREv5h3y5Bp\nTalking drum (atumpan) mimics speech\nCopies pitch, rhythm, and tone of language\nWorks because of tonal languages (like Twi)\nSame word = different meaning depending on the pitch\nUsed to communicate proverbs, messages, and history\nConnected to Akan culture (Ghana)\nMatrilineal Society\nLeadership through Nana (Chiefs)",
+};
 
 const defaultDeck = [
+  talkingDrumCard,
   {
     trackId: "7ouMYWpwJ422jRcDASZB7P",
     answer: "Coldplay - Viva la Vida",
@@ -29,10 +35,11 @@ const nextBtn = document.getElementById("nextBtn");
 const shuffleBtn = document.getElementById("shuffleBtn");
 const resetDeckBtn = document.getElementById("resetDeck");
 
-let deck = loadDeck();
+let deck = ensureFeaturedFirstCard(loadDeck());
 let currentIndex = 0;
 let isFlipped = false;
 
+persistDeck();
 renderCard();
 
 form.addEventListener("submit", (event) => {
@@ -139,11 +146,14 @@ function renderCard() {
 
   flashcard.innerHTML = `
     <div class="face front">
-      <iframe
-        src="${embedSrc}"
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        loading="lazy"
-      ></iframe>
+      <div class="spotify-frame-wrap" aria-label="Spotify player">
+        <iframe
+          src="${embedSrc}"
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy"
+        ></iframe>
+        <div class="spotify-mask" aria-hidden="true"></div>
+      </div>
     </div>
     <div class="face back">
       <p>${escapeHtml(card.answer)}</p>
@@ -195,6 +205,29 @@ function loadDeck() {
   } catch {
     return [...defaultDeck];
   }
+}
+
+function ensureFeaturedFirstCard(cards) {
+  if (!Array.isArray(cards)) {
+    return [talkingDrumCard, ...defaultDeck.slice(1)];
+  }
+
+  const existingIndex = cards.findIndex(
+    (card) => card && card.trackId === talkingDrumCard.trackId
+  );
+
+  if (existingIndex === -1) {
+    return [talkingDrumCard, ...cards];
+  }
+
+  if (existingIndex === 0) {
+    return cards;
+  }
+
+  const reordered = [...cards];
+  const [existing] = reordered.splice(existingIndex, 1);
+  reordered.unshift(existing);
+  return reordered;
 }
 
 function persistDeck() {

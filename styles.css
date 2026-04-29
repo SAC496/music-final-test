@@ -220,11 +220,35 @@ button:hover {
   border-radius: 12px;
 }
 
+.spotify-frame-wrap {
+  position: relative;
+  width: min(560px, 100%);
+}
+
+.spotify-frame-wrap iframe {
+  width: 100%;
+}
+
+.spotify-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 56px;
+  border-radius: 12px 12px 0 0;
+  background: linear-gradient(180deg, rgba(7, 20, 33, 0.98), rgba(7, 20, 33, 0.94));
+  pointer-events: none;
+}
+
 .back {
   transform: rotateY(180deg);
   font-size: clamp(1.1rem, 2.5vw, 1.5rem);
   font-family: "Fraunces", serif;
   line-height: 1.35;
+}
+
+.back p {
+  white-space: pre-line;
 }
 
 .card-shell.empty .flashcard {
