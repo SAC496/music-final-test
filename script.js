@@ -30,6 +30,24 @@ Spiritual communication with ancestors
 Music creates trance like state`,
   },
   {
+    trackId: "external-mabasa-work",
+    embedUrl:
+      "https://canvas.pitt.edu/media_attachments_iframe/22994526",
+    answer: `Mabasa (work)
+Chimurenga Music
+Zimbabwean political resistance music
+Combines
+Mbira style
+Modern instruments (electric guitar, etc.)
+Key features:
+Cyclical interlocking patterns
+Layered texture
+Lyrics tied to labor, struggle, identity
+Cultural meaning
+Anti-colonial struggle
+Music as political voice`,
+  },
+  {
     trackId: "4EjEy3NkbF5Iur6hJE4rb4",
     answer: `PL 8-29: Rag Sindhi Bhairavi - Rag Sindhi Bhairavi
 Main ideas:
