@@ -1,0 +1,289 @@
+:root {
+  --bg-1: #08131f;
+  --bg-2: #0f2230;
+  --ink: #f3f8ff;
+  --ink-soft: #c5d7ea;
+  --panel: rgba(5, 14, 23, 0.72);
+  --line: rgba(141, 180, 217, 0.35);
+  --accent: #38d8b2;
+  --accent-2: #ffba52;
+  --danger: #ff7272;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  color: var(--ink);
+  background: radial-gradient(circle at 10% 10%, #1c364e, var(--bg-1) 38%),
+    radial-gradient(circle at 80% 0%, #12344d, transparent 40%),
+    linear-gradient(140deg, var(--bg-1), var(--bg-2));
+  overflow-x: hidden;
+}
+
+.aurora {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(55px);
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 0;
+  animation: drift 18s infinite ease-in-out alternate;
+}
+
+.aurora-1 {
+  width: 280px;
+  height: 280px;
+  background: #2ad2ff;
+  top: -90px;
+  right: -70px;
+}
+
+.aurora-2 {
+  width: 320px;
+  height: 320px;
+  background: #ffa95b;
+  bottom: -120px;
+  left: -80px;
+  animation-delay: 1.6s;
+}
+
+.page {
+  position: relative;
+  z-index: 1;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 2.2rem 1rem 2.8rem;
+  display: grid;
+  gap: 1.2rem;
+}
+
+.hero {
+  animation: rise-in 600ms ease-out;
+}
+
+.eyebrow {
+  margin: 0;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+  font-size: 0.76rem;
+}
+
+h1 {
+  margin: 0.2rem 0 0;
+  font-family: "Fraunces", serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  line-height: 1.04;
+}
+
+.subtitle {
+  max-width: 70ch;
+  color: var(--ink-soft);
+  margin: 0.8rem 0 0;
+}
+
+.panel {
+  background: var(--panel);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 1rem;
+  animation: rise-in 650ms ease-out;
+}
+
+.panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+
+h2 {
+  margin: 0;
+  font-size: 1.18rem;
+}
+
+.builder-form {
+  display: grid;
+  gap: 0.6rem;
+  margin-top: 0.8rem;
+}
+
+label {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+input,
+textarea,
+button {
+  font: inherit;
+}
+
+input,
+textarea {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: rgba(8, 20, 33, 0.85);
+  color: var(--ink);
+  padding: 0.7rem 0.75rem;
+}
+
+input:focus,
+textarea:focus,
+button:focus {
+  outline: 2px solid rgba(56, 216, 178, 0.45);
+  outline-offset: 1px;
+}
+
+button {
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 0.58rem 1rem;
+  cursor: pointer;
+  transition: transform 180ms ease, filter 180ms ease, background 180ms ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.07);
+}
+
+.accent {
+  background: linear-gradient(110deg, var(--accent), #2eaeff);
+  color: #072136;
+  font-weight: 700;
+}
+
+.ghost {
+  background: transparent;
+  border-color: var(--line);
+  color: var(--ink);
+}
+
+.form-message {
+  margin: 0.1rem 0 0;
+  min-height: 1.3em;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+.form-message.error {
+  color: var(--danger);
+}
+
+.counter {
+  margin: 0;
+  color: var(--ink-soft);
+}
+
+.card-shell {
+  margin-top: 1rem;
+  perspective: 1000px;
+}
+
+.flashcard {
+  position: relative;
+  width: 100%;
+  min-height: 310px;
+  transform-style: preserve-3d;
+  transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.flashcard.flipped {
+  transform: rotateY(180deg);
+}
+
+.face {
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 1rem;
+  background: linear-gradient(150deg, rgba(7, 20, 33, 0.95), rgba(10, 28, 45, 0.88));
+  backface-visibility: hidden;
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+
+.front iframe {
+  width: min(560px, 100%);
+  min-height: 160px;
+  border: 0;
+  border-radius: 12px;
+}
+
+.back {
+  transform: rotateY(180deg);
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-family: "Fraunces", serif;
+  line-height: 1.35;
+}
+
+.card-shell.empty .flashcard {
+  min-height: 160px;
+}
+
+.controls {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.controls button {
+  background: rgba(10, 30, 47, 0.85);
+  color: var(--ink);
+  border-color: var(--line);
+}
+
+.controls .accent {
+  border-color: transparent;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes drift {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  to {
+    transform: translate3d(12px, 18px, 0) scale(1.1);
+  }
+}
+
+@media (max-width: 680px) {
+  .page {
+    padding: 1.2rem 0.75rem 2rem;
+  }
+
+  .panel {
+    padding: 0.9rem;
+  }
+
+  .flashcard {
+    min-height: 280px;
+  }
+
+  .controls button {
+    flex: 1 1 calc(50% - 0.35rem);
+  }
+}

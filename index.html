@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SongCards Study</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="aurora aurora-1" aria-hidden="true"></div>
+    <div class="aurora aurora-2" aria-hidden="true"></div>
+
+    <main class="page">
+      <header class="hero">
+        <p class="eyebrow">SongCards</p>
+        <h1>Study music like flashcards.</h1>
+        <p class="subtitle">
+          Each card front is a Spotify track player. Flip to reveal your answer,
+          memory prompt, or note.
+        </p>
+      </header>
+
+      <section class="panel" aria-labelledby="builder-title">
+        <div class="panel-head">
+          <h2 id="builder-title">Build Your Deck</h2>
+          <button id="resetDeck" class="ghost" type="button">Reset</button>
+        </div>
+
+        <form id="addCardForm" class="builder-form">
+          <label for="spotifyUrl">Spotify Track URL</label>
+          <input
+            id="spotifyUrl"
+            name="spotifyUrl"
+            type="url"
+            placeholder="https://open.spotify.com/track/..."
+            required
+          />
+
+          <label for="cardAnswer">Back of Card (answer/note)</label>
+          <textarea
+            id="cardAnswer"
+            name="cardAnswer"
+            rows="3"
+            placeholder="Artist, album, era, memory trigger..."
+            required
+          ></textarea>
+
+          <button type="submit" class="accent">Add Card</button>
+          <p id="formMessage" class="form-message" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="panel study-panel" aria-labelledby="study-title">
+        <div class="panel-head">
+          <h2 id="study-title">Study Deck</h2>
+          <p id="counter" class="counter">0 / 0</p>
+        </div>
+
+        <div id="cardShell" class="card-shell empty">
+          <article id="flashcard" class="flashcard" aria-live="polite">
+            <div class="face front">
+              <p>Start by adding a Spotify song above.</p>
+            </div>
+            <div class="face back">
+              <p>Your answer will appear here.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="controls">
+          <button id="prevBtn" type="button">Previous</button>
+          <button id="flipBtn" type="button" class="accent">Flip</button>
+          <button id="nextBtn" type="button">Next</button>
+          <button id="shuffleBtn" type="button" class="ghost">Shuffle</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
