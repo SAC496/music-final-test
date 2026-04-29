@@ -373,6 +373,7 @@ function renderCard() {
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
           loading="lazy"
         ></iframe>
+        <div class="spotify-art-mask" aria-hidden="true"></div>
         <div class="spotify-mask" aria-hidden="true"></div>
       </div>
     </div>
