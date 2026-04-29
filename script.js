@@ -300,7 +300,7 @@ flipBtn.addEventListener("click", () => {
     return;
   }
   isFlipped = !isFlipped;
-  flashcard.classList.toggle("flipped", isFlipped);
+  flashcard.classList.toggle("show-back", isFlipped);
 });
 
 nextBtn.addEventListener("click", () => {
@@ -344,7 +344,7 @@ resetDeckBtn.addEventListener("click", () => {
 });
 
 function renderCard() {
-  flashcard.classList.remove("flipped");
+  flashcard.classList.remove("show-back");
   isFlipped = false;
 
   if (!deck.length) {
