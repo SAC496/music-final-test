@@ -223,10 +223,14 @@ button:hover {
 .spotify-frame-wrap {
   position: relative;
   width: min(560px, 100%);
+  overflow: hidden;
+  border-radius: 12px;
 }
 
 .spotify-frame-wrap iframe {
-  width: 100%;
+  display: block;
+  width: calc(100% + 96px);
+  margin-left: -96px;
 }
 
 .spotify-mask {

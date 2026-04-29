@@ -2,7 +2,7 @@ const STORAGE_KEY = "songcards-deck";
 const talkingDrumCard = {
   trackId: "5SQCSiFsP7bIREv5h3y5Bp",
   answer:
-    "10-1: Talking Drum https://open.spotify.com/track/5SQCSiFsP7bIREv5h3y5Bp\nTalking drum (atumpan) mimics speech\nCopies pitch, rhythm, and tone of language\nWorks because of tonal languages (like Twi)\nSame word = different meaning depending on the pitch\nUsed to communicate proverbs, messages, and history\nConnected to Akan culture (Ghana)\nMatrilineal Society\nLeadership through Nana (Chiefs)",
+    "10-1: Talking Drum\nTalking drum (atumpan) mimics speech\nCopies pitch, rhythm, and tone of language\nWorks because of tonal languages (like Twi)\nSame word = different meaning depending on the pitch\nUsed to communicate proverbs, messages, and history\nConnected to Akan culture (Ghana)\nMatrilineal Society\nLeadership through Nana (Chiefs)",
 };
 
 const defaultDeck = [
@@ -220,13 +220,14 @@ function ensureFeaturedFirstCard(cards) {
     return [talkingDrumCard, ...cards];
   }
 
-  if (existingIndex === 0) {
-    return cards;
-  }
-
   const reordered = [...cards];
   const [existing] = reordered.splice(existingIndex, 1);
-  reordered.unshift(existing);
+  // Keep this featured card consistent if an older saved version is in storage.
+  reordered.unshift({
+    ...existing,
+    trackId: talkingDrumCard.trackId,
+    answer: talkingDrumCard.answer,
+  });
   return reordered;
 }
 
