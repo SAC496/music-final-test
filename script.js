@@ -414,7 +414,7 @@ function renderCard() {
       </div>
     </div>
     <div class="face back">
-      <p>${escapeHtml(card.answer)}</p>
+      <p>${formatAnswerForDisplay(card.answer)}</p>
     </div>
   `;
 
@@ -508,6 +508,34 @@ function persistDeck() {
 function setFormMessage(message, isError = false) {
   formMessage.textContent = message;
   formMessage.classList.toggle("error", isError);
+}
+
+function formatAnswerForDisplay(answer) {
+  const lines = String(answer).split("\n");
+  if (lines.length <= 1) {
+    return escapeHtml(answer);
+  }
+
+  const formatted = lines.map((line, index) => {
+    const trimmed = line.trim();
+    if (!trimmed) {
+      return "";
+    }
+
+    // Keep title/track line and section headers plain.
+    if (index === 0 || trimmed.endsWith(":")) {
+      return escapeHtml(trimmed);
+    }
+
+    // Preserve existing bullets if already present.
+    if (/^[-*•]\s+/.test(trimmed)) {
+      return escapeHtml(trimmed.replace(/^[-*]\s+/, "• "));
+    }
+
+    return `• ${escapeHtml(trimmed)}`;
+  });
+
+  return formatted.join("\n");
 }
 
 function escapeHtml(value) {
