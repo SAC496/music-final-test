@@ -15,6 +15,21 @@ Leadership through Nana (Chiefs)`,
 const requiredDeck = [
   talkingDrumCard,
   {
+    trackId: "external-nhemamusasa-bira",
+    embedUrl:
+      "https://canvas.pitt.edu/media_attachments_iframe/22994524",
+    answer: `Nhemamusasa (Bira Ceremony)
+Uses mbira (thumb piano)
+Key features:
+Cyclical patterns
+Layered ostinatos
+Interlocking parts
+Buzzing timbre
+Purpose:
+Spiritual communication with ancestors
+Music creates trance like state`,
+  },
+  {
     trackId: "4EjEy3NkbF5Iur6hJE4rb4",
     answer: `PL 8-29: Rag Sindhi Bhairavi - Rag Sindhi Bhairavi
 Main ideas:
@@ -363,7 +378,14 @@ function renderCard() {
 
   cardShell.classList.remove("empty");
   const card = deck[currentIndex];
-  const embedSrc = `https://open.spotify.com/embed/track/${card.trackId}?utm_source=generator`;
+  const isExternalEmbed =
+    typeof card.embedUrl === "string" && card.embedUrl.trim().length > 0;
+  const embedSrc = isExternalEmbed
+    ? card.embedUrl.trim()
+    : `https://open.spotify.com/embed/track/${card.trackId}?utm_source=generator`;
+  const privacyMaskHtml = isExternalEmbed
+    ? ""
+    : '<div class="spotify-art-mask" aria-hidden="true"></div><div class="spotify-mask" aria-hidden="true"></div>';
 
   flashcard.innerHTML = `
     <div class="face front">
@@ -373,8 +395,7 @@ function renderCard() {
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
           loading="lazy"
         ></iframe>
-        <div class="spotify-art-mask" aria-hidden="true"></div>
-        <div class="spotify-mask" aria-hidden="true"></div>
+        ${privacyMaskHtml}
       </div>
     </div>
     <div class="face back">
