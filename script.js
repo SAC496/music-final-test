@@ -48,6 +48,25 @@ Anti-colonial struggle
 Music as political voice`,
   },
   {
+    trackId: "external-paragraph",
+    embedUrl:
+      "https://canvas.pitt.edu/media_attachments_iframe/24146700",
+    answer: `Paragraph - Paragraph
+Main ideas:
+Example of intercultural collaboration
+Indonesian composer working with American gamelan group
+Musical features:
+Mixes different tuning systems/scales
+Creates intentional dissonance
+Meaning:
+Represents:
+Cultures coming together
+But also not fully blending
+Concept:
+Limits of collaboration
+Different training + backgrounds`,
+  },
+  {
     trackId: "4EjEy3NkbF5Iur6hJE4rb4",
     answer: `PL 8-29: Rag Sindhi Bhairavi - Rag Sindhi Bhairavi
 Main ideas:
