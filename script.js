@@ -84,6 +84,21 @@ Individual interpretation
 Still follows rules of raga`,
   },
   {
+    trackId: "external-tappa-raag-shohini",
+    embedUrl: "https://www.youtube.com/embed/kH_TTIqBdSk",
+    answer: `Tappa in Raag Shohini - Tappa in Raag Shohini
+Main ideas:
+Example of Tappa style
+Faster, more ornamented vocal genre
+Musical features:
+Very quick, bouncy melodies
+Heavy ornamentation (rapid turns, jumps)
+Still based on a raga (Shohini)
+Concepts:
+More virtuosic than slower raga styles
+Focus on technical skill + agility`,
+  },
+  {
     trackId: "4EjEy3NkbF5Iur6hJE4rb4",
     answer: `PL 8-29: Rag Sindhi Bhairavi - Rag Sindhi Bhairavi
 Main ideas:
