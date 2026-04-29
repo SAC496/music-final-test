@@ -67,6 +67,23 @@ Limits of collaboration
 Different training + backgrounds`,
   },
   {
+    trackId: "external-o-miyan-vey-jaanwale",
+    embedUrl: "https://www.youtube.com/embed/4LfbqaCAFQs",
+    answer: `PL (same piece): O Miyan Vey Jaanwale - O Miyan Vey Jaanwale
+Main ideas:
+Same composition, different performer -> shows variation within tradition
+Girija Devi is known for expressive style
+Musical features:
+Same raga framework
+Different:
+Ornamentation
+Phrasing
+Emotional delivery
+Concepts:
+Individual interpretation
+Still follows rules of raga`,
+  },
+  {
     trackId: "4EjEy3NkbF5Iur6hJE4rb4",
     answer: `PL 8-29: Rag Sindhi Bhairavi - Rag Sindhi Bhairavi
 Main ideas:
