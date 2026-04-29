@@ -234,9 +234,9 @@ button:hover {
   position: absolute;
   top: 0;
   left: 0;
-  width: 84px;
+  width: clamp(124px, 24%, 168px);
   bottom: 0;
-  background: linear-gradient(90deg, rgba(7, 20, 33, 0.98), rgba(7, 20, 33, 0.95));
+  background: linear-gradient(90deg, rgba(7, 20, 33, 0.995), rgba(7, 20, 33, 0.97));
   pointer-events: none;
 }
 
