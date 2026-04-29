@@ -452,20 +452,29 @@ function renderCard() {
   const embedSrc = isExternalEmbed
     ? card.embedUrl.trim()
     : `https://open.spotify.com/embed/track/${card.trackId}?utm_source=generator`;
+  const isCanvasEmbed =
+    isExternalEmbed &&
+    embedSrc.includes("canvas.pitt.edu/media_attachments_iframe/");
   const privacyMaskHtml = isExternalEmbed
     ? ""
     : '<div class="spotify-art-mask" aria-hidden="true"></div><div class="spotify-mask" aria-hidden="true"></div>';
-
-  flashcard.innerHTML = `
-    <div class="face front">
-      <div class="spotify-frame-wrap" aria-label="Spotify player">
+  const frontContent = isCanvasEmbed
+    ? `<div class="external-media-card">
+        <p>Canvas blocks this media inside GitHub Pages embeds.</p>
+        <a class="external-open-btn" href="${escapeHtml(embedSrc)}" target="_blank" rel="noopener noreferrer">Open Media in Canvas</a>
+      </div>`
+    : `<div class="spotify-frame-wrap" aria-label="Audio player">
         <iframe
           src="${embedSrc}"
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
           loading="lazy"
         ></iframe>
         ${privacyMaskHtml}
-      </div>
+      </div>`;
+
+  flashcard.innerHTML = `
+    <div class="face front">
+      ${frontContent}
     </div>
     <div class="face back">
       <p>${formatAnswerForDisplay(card.answer)}</p>

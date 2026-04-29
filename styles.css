@@ -251,6 +251,37 @@ button:hover {
   pointer-events: none;
 }
 
+.external-media-card {
+  width: min(560px, 100%);
+  min-height: 210px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: rgba(8, 20, 33, 0.86);
+  padding: 1rem;
+  display: grid;
+  gap: 0.8rem;
+  place-items: center;
+  text-align: center;
+}
+
+.external-media-card p {
+  margin: 0;
+  color: var(--ink-soft);
+}
+
+.external-open-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  padding: 0.58rem 1rem;
+  background: linear-gradient(110deg, var(--accent), #2eaeff);
+  color: #072136;
+  font-weight: 700;
+  text-decoration: none;
+}
+
 .back {
   font-size: clamp(0.82rem, 1.2vw, 0.95rem);
   font-family: "Fraunces", serif;
