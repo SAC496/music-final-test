@@ -26,46 +26,19 @@
         </p>
       </header>
 
-      <section class="panel" aria-labelledby="builder-title">
-        <div class="panel-head">
-          <h2 id="builder-title">Build Your Deck</h2>
-          <button id="resetDeck" class="ghost" type="button">Reset</button>
-        </div>
-
-        <form id="addCardForm" class="builder-form">
-          <label for="spotifyUrl">Spotify Track URL</label>
-          <input
-            id="spotifyUrl"
-            name="spotifyUrl"
-            type="url"
-            placeholder="https://open.spotify.com/track/..."
-            required
-          />
-
-          <label for="cardAnswer">Back of Card (answer/note)</label>
-          <textarea
-            id="cardAnswer"
-            name="cardAnswer"
-            rows="3"
-            placeholder="Artist, album, era, memory trigger..."
-            required
-          ></textarea>
-
-          <button type="submit" class="accent">Add Card</button>
-          <p id="formMessage" class="form-message" role="status" aria-live="polite"></p>
-        </form>
-      </section>
-
       <section class="panel study-panel" aria-labelledby="study-title">
         <div class="panel-head">
           <h2 id="study-title">Study Deck</h2>
-          <p id="counter" class="counter">0 / 0</p>
+          <div class="study-head-actions">
+            <p id="counter" class="counter">0 / 0</p>
+            <button id="resetDeck" class="ghost" type="button">Reset</button>
+          </div>
         </div>
 
         <div id="cardShell" class="card-shell empty">
           <article id="flashcard" class="flashcard" aria-live="polite">
             <div class="face front">
-              <p>Start by adding a Spotify song above.</p>
+              <p>Press flip to reveal the notes.</p>
             </div>
             <div class="face back">
               <p>Your answer will appear here.</p>

@@ -279,11 +279,6 @@ Constant variation (texture changes over time)`,
 
 const defaultDeck = [...requiredDeck];
 
-const form = document.getElementById("addCardForm");
-const spotifyUrlInput = document.getElementById("spotifyUrl");
-const cardAnswerInput = document.getElementById("cardAnswer");
-const formMessage = document.getElementById("formMessage");
-
 const counter = document.getElementById("counter");
 const cardShell = document.getElementById("cardShell");
 const flashcard = document.getElementById("flashcard");
@@ -299,37 +294,6 @@ let isFlipped = false;
 
 persistDeck();
 renderCard();
-
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
-
-  const spotifyUrl = spotifyUrlInput.value.trim();
-  const answer = cardAnswerInput.value.trim();
-
-  if (!spotifyUrl || !answer) {
-    setFormMessage("Please provide both fields.", true);
-    return;
-  }
-
-  const trackId = extractSpotifyTrackId(spotifyUrl);
-  if (!trackId) {
-    setFormMessage(
-      "That link does not look like a Spotify track URL. Paste a track link.",
-      true
-    );
-    return;
-  }
-
-  deck.push({ trackId, answer });
-  persistDeck();
-
-  currentIndex = deck.length - 1;
-  isFlipped = false;
-  renderCard();
-
-  form.reset();
-  setFormMessage("Card added to your deck.");
-});
 
 flipBtn.addEventListener("click", () => {
   if (!deck.length) {
@@ -377,7 +341,6 @@ resetDeckBtn.addEventListener("click", () => {
   isFlipped = false;
   persistDeck();
   renderCard();
-  setFormMessage("Deck reset to starter songs.");
 });
 
 function renderCard() {
@@ -419,29 +382,6 @@ function renderCard() {
   `;
 
   counter.textContent = `${currentIndex + 1} / ${deck.length}`;
-}
-
-function extractSpotifyTrackId(urlValue) {
-  const raw = urlValue.trim();
-
-  const uriMatch = raw.match(/^spotify:track:([a-zA-Z0-9]+)$/);
-  if (uriMatch) {
-    return uriMatch[1];
-  }
-
-  try {
-    const url = new URL(raw);
-    const parts = url.pathname.split("/").filter(Boolean);
-    const trackIndex = parts.indexOf("track");
-
-    if (trackIndex === -1 || !parts[trackIndex + 1]) {
-      return "";
-    }
-
-    return parts[trackIndex + 1];
-  } catch {
-    return "";
-  }
 }
 
 function loadDeck() {
@@ -503,11 +443,6 @@ function ensureRequiredCards(cards) {
 
 function persistDeck() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(deck));
-}
-
-function setFormMessage(message, isError = false) {
-  formMessage.textContent = message;
-  formMessage.classList.toggle("error", isError);
 }
 
 function formatAnswerForDisplay(answer) {
